@@ -1,0 +1,64 @@
+{
+  "name": "commitlint-jira",
+  "description": "✔️❌ Shareable commitlint config enforcing Jira commits messages style",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Trung Nguyen",
+    "email": "minhtrung2031997@gmail.com"
+  },
+  "keywords": [
+    "commitlint",
+    "jira-commitlint",
+    "jira-style",
+    "jira",
+    "multipack"
+  ],
+  "scripts": {
+    "build:packages": "lerna run build",
+    "watch:packages": "lerna run watch",
+    "link:packages": "lerna bootstrap",
+    "version:packages": "lerna version --conventional-commits --yes --message=\"chore: publish changed packages\"",
+    "publish:packages:npm": "lerna publish from-package --yes --registry=https://registry.npmjs.org",
+    "publish:packages:github": "lerna publish from-package --yes --registry=https://npm.pkg.github.com",
+    "test:packages": "jest --coverage",
+    "watch:test:packages": "jest --watch",
+    "lint:packages": "eslint ./packages --ext .ts --max-warnings=0",
+    "fix:packages": "eslint ./packages --ext .ts --fix --max-warnings=0"
+  },
+  "lint-staged": {
+    "*.{ts}": [
+      "npm run lint:packages",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@types/jest": "^29.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lerna": "^7.0.2",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.1.3"
+  }
+}
