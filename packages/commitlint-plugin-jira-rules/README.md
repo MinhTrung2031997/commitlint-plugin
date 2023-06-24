@@ -43,20 +43,20 @@ module.exports = {
 
 ## Rules
 ```bash
-// <type>[<scope>(optional)]: [<ticket-id>(uppercase-number)] <title>
-// [optional body]
-// [optional footer(s)]
+// You must follow this rule
+<type>[<scope>(optional)]: [<ticket-id>(uppercase-number)] <title>
+[optional body]
+[optional footer(s)]
 ```
 Notes: The attributes must be based on this below:
-- [type]: build, ci, docs, fix, feat, perf, refactor, style, test, chore
-- [scope]: fatal, major, minor, ui, http, compiler, etc.
-- [ticket_id]: Jira’s ticket ID
-- [title]: short, meaningful, imperative mood, 60-character long, no capitalization, no ending dot (.)
+- <span style="color: green">type</span>: build, ci, docs, fix, feat, perf, refactor, style, test, chore
+- <span style="color: green">scope</span>: fatal, major, minor, ui, http, compiler, etc.
+- <span style="color: green">ticket_id</span>: Jira’s ticket ID
+- <span style="color: green">title</span>: meaningful, imperative mood, 60-character long, no capitalization, no ending dot (.)
 
 ## Examples
 
 ```bash
-// If your task do not have an id use a conventional task id e.g: IB-0000
 // ❌ Bad commit messages
 git commit -m"My commit message body"
 git commit -m":My commit message body"
