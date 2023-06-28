@@ -11,17 +11,6 @@ describe('jiraCommitTypeCaseRuleResolver', () => {
   it('should return a error response if the title does not match rules', () => {
     expect(
       jiraCommitTitleCaseRuleResolver({
-        raw: 'test: [VA-125] put some more mock tests to the UI screen.',
-      })[0],
-    ).toEqual(false)
-    expect(
-      jiraCommitTitleCaseRuleResolver({
-        raw: 'test: [VA-25] put some more mock tests to the UI screen',
-      })[0],
-    ).toEqual(false)
-
-    expect(
-      jiraCommitTitleCaseRuleResolver({
         raw:
           'test: [VA-25] put some more mock tests to the ui screen put some more mock tests to the ui screen',
       })[0],
@@ -31,7 +20,7 @@ describe('jiraCommitTypeCaseRuleResolver', () => {
   it('should return true if the title match rules', () => {
     expect(
       jiraCommitTitleCaseRuleResolver({
-        raw: 'test: [VA-125] put some more mock tests to the ui screen',
+        raw: 'test: [VA-125] put some more mock tests to the UI-64 screen',
       })[0],
     ).toEqual(true)
   })

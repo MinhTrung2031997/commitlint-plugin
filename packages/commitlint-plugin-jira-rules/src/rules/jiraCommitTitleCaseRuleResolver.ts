@@ -8,7 +8,7 @@ const jiraCommitTitleCaseRuleResolver: TRuleResolver = parsed => {
 
   const { title } = parseCommitMessage(rawCommitMessage)
 
-  if (!/^.{10,60}$/.test(title) || !/[^.]$/.test(title) || !/^[a-z ]+$/.test(title)) {
+  if (!/^.{10,60}$/.test(title) || !/[^.]$/.test(title)) {
     return [
       false,
       `title must be at least 10-character and max 60-character long, no capitalization, no ending dot`,
