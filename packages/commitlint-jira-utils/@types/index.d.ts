@@ -23,7 +23,7 @@ export type TParseCommitMessage = (
   commitMessage: string,
 ) => {
   type: string
-  scope: string
+  rawCommitScope: string
   ticketId: string
   title: string
 }

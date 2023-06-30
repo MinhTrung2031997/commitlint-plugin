@@ -1,7 +1,7 @@
 {
   "name": "commitlint-plugin-shr-jira",
   "description": "A plugin that implement all jira commits messages style rules and validate commit messages",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "license": "MIT",
   "author": {
     "name": "Trung Nguyen",
@@ -30,6 +30,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "commitlint-jira-utils-jquery": "^1.0.1"
+    "commitlint-jira-utils-jquery": "^1.0.3"
   }
 }

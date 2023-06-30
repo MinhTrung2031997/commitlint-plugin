@@ -1,7 +1,7 @@
 {
   "name": "commitlint-jira-utils-jquery",
   "description": "A set of utils for commitlint-jira monorepo",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "license": "MIT",
   "author": {
     "name": "Trung Nguyen",

@@ -8,6 +8,8 @@ export const commitlintConfigJira: CommitlintConfigJira = {
       'always',
       commitlintJiraConstants.COMMIT_MESSAGE_SEPARATOR,
     ],
+    
+    [commitlintJiraConstants.JIRA_RULES.commitScopeOptionalCase]: [2, 'always'],
 
     [commitlintJiraConstants.JIRA_RULES.commitTypeCase]: [
       2,

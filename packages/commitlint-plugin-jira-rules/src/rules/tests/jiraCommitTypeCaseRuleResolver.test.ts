@@ -25,7 +25,6 @@ describe('jiraCommitTypeCaseRuleResolver', () => {
       'test',
       'chore',
     ])
-    console.log(res);
     
     expect(res[0]).toEqual(false)
   })
@@ -47,5 +46,40 @@ describe('jiraCommitTypeCaseRuleResolver', () => {
       'chore',
     ])
     expect(res[0]).toEqual(true)
+
+    const parsed2 = {
+      raw: 'test[major]: [VA-125] put some more mock tests to the UI screen',
+    }
+    const res2 = jiraCommitTypeCaseRuleResolver(parsed2, undefined, [
+      'build',
+      'ci',
+      'docs',
+      'fix',
+      'feat',
+      'perf',
+      'refactor',
+      'style',
+      'test',
+      'chore',
+    ])
+    expect(res2[0]).toEqual(true)
+
+
+    const parsed3 = {
+      raw: 'test(SHAR-1155): [VA-125] put some more mock tests to the UI screen',
+    }
+    const res3 = jiraCommitTypeCaseRuleResolver(parsed3, undefined, [
+      'build',
+      'ci',
+      'docs',
+      'fix',
+      'feat',
+      'perf',
+      'refactor',
+      'style',
+      'test',
+      'chore',
+    ])
+    expect(res3[0]).toEqual(true)
   })
 })

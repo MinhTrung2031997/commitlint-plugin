@@ -8,7 +8,8 @@ export const JIRA_RULES = {
 
 export const COMMIT_MESSAGE_SEPARATOR = ':'
 export const COMMIT_TASK_IDS_SEPARATOR = ','
-export const COMMIT_TASK_STATUS_PATTERN = /\[.*\]/gi
+export const COMMIT_TASK_STATUS_SQUARE_PATTERN = /\[.*\]/gi
+export const COMMIT_TASK_STATUS_PATTERN = /\(.*\)/gi
 export const TASK_ID_SEPARATOR = '-'
 export const COMMIT_STATUS_SEPARATORS = {
   start: '[',

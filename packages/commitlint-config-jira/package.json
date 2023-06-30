@@ -1,7 +1,7 @@
 {
   "name": "commitlint-config-jira-jquery",
   "description": "A recomended config who contain preconfigured rules for jira commits messages style",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "license": "MIT",
   "author": {
     "name": "Trung Nguyen",
@@ -31,7 +31,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "commitlint-jira-utils-jquery": "^1.0.1",
+    "commitlint-jira-utils-jquery": "^1.0.3",
     "opencollective-postinstall": "^2.0.3"
   }
 }

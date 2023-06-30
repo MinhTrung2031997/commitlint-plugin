@@ -25,8 +25,40 @@ describe('jiraCommitTicketIdCaseRuleResolver', () => {
   it('should return true if the ticket id match rules', () => {
     expect(
       jiraCommitTicketIdCaseRuleResolver({
-        raw: 'test: [VA-125] put some more mock tests to the UI screen',
+        raw: 'feat(VA-123): [VA-125] put some more mock tests to the UI screen',
       })[0],
     ).toEqual(true)
+
+    expect(
+      jiraCommitTicketIdCaseRuleResolver({
+        raw: 'test(VA-123): put some more mock tests to the UI screen',
+      })[0],
+    ).toEqual(true)
+
+    expect(
+      jiraCommitTicketIdCaseRuleResolver({
+        raw: 'test(VA-123): [VA-125] put some more mock tests to the UI screen',
+      })[0],
+    ).toEqual(true)
+  })
+
+  it("should return error if the ticket id doesn't match rules", () => {
+    expect(
+      jiraCommitTicketIdCaseRuleResolver({
+        raw: 'fix(VA-123): put some more mock tests to the UI screen',
+      })[0],
+    ).toEqual(false)
+
+    expect(
+      jiraCommitTicketIdCaseRuleResolver({
+        raw: 'feat(VA-123): put some more mock tests to the UI screen',
+      })[0],
+    ).toEqual(false)
+
+    expect(
+      jiraCommitTicketIdCaseRuleResolver({
+        raw: 'build(VA-123): [Va-125] put some more mock tests to the UI screen',
+      })[0],
+    ).toEqual(false)
   })
 })

@@ -4,6 +4,7 @@ import {
   COMMIT_TASK_STATUS_PATTERN,
   COMMIT_STATUS_SEPARATORS,
   COMMIT_DESCRIPTION_SEPARATOR,
+  COMMIT_TASK_STATUS_SQUARE_PATTERN,
 } from './commitlintJiraConstants'
 
 const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
@@ -15,7 +16,16 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
 
   const rawCommitHeader = commitMessageParts.length >= 2 ? commitMessageParts[0] : ''
 
-  const type = rawCommitHeader.replace(COMMIT_TASK_STATUS_PATTERN, '').trim()
+  const type = rawCommitHeader
+    .replace(
+      rawCommitHeader.includes('(' && ')')
+        ? COMMIT_TASK_STATUS_PATTERN
+        : COMMIT_TASK_STATUS_SQUARE_PATTERN,
+      '',
+    )
+    .trim()
+
+  const rawCommitScope = rawCommitHeader.replace(type, '')
 
   const commitFooter =
     commitMessageParts.length > 2
@@ -25,24 +35,15 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
           .trim()
       : commitMessageParts[commitMessageParts.length - 1].trim()
 
-  const rawCommitScope = rawCommitHeader.split(COMMIT_STATUS_SEPARATORS.start)
-
-  const scope =
-    rawCommitScope.length >= 2
-      ? rawCommitScope[rawCommitScope.length - 1].replace(COMMIT_STATUS_SEPARATORS.end, '').trim()
-      : ''
-
-  const rawCommitTicketId = commitFooter.split(COMMIT_STATUS_SEPARATORS.end)
-
-  const ticketId = rawCommitTicketId.length
-    ? rawCommitTicketId[0].replace(COMMIT_STATUS_SEPARATORS.start, '').trim()
+  const ticketId = commitFooter.includes('[' && ']')
+    ? commitFooter.split(']')[0].replace('[', '').trim()
     : ''
 
-  const title = commitFooter.replace(COMMIT_TASK_STATUS_PATTERN, '').trim()
+  const title = commitFooter.replace(COMMIT_TASK_STATUS_SQUARE_PATTERN, '').trim()
 
   return {
     type,
-    scope,
+    rawCommitScope,
     ticketId,
     title,
   }
